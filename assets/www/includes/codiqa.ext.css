@@ -1,0 +1,9 @@
+/* Put your custom CSS here */
+
+#headerlogo {
+	display: block;
+	width: 100%;
+	height: 70px;
+	padding: 3px;
+	background: url(images/logo.png) no-repeat left #f6e12c
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <title>MoBible</title>
+  
+  <link rel="stylesheet" href="includes/jquery.mobile-1.3.1.min.css">
+  
+  <!-- Extra Codiqa features -->
+  <link rel="stylesheet" href="includes/codiqa.ext.css">
+  
+  <!-- Cordova -->
+  <script src="includes/cordova.js" type="text/javascript"></script>
+  
+  <!-- jQuery and jQuery Mobile -->
+  <script src="includes/jquery-1.9.1.min.js"></script>
+  <script src="includes/jquery.mobile-1.3.1.min.js"></script>
+
+  <!-- Extra Codiqa features -->
+  <script src="includes/codiqa.ext.js"></script>
+  
+  <script type="text/javascript" charset="utf-8">
+
+	// Wait for Cordova to load
+	//
+    document.addEventListener("deviceready", onDeviceReady, false);
+	
+	//Declare Arrary for data storage
+	var tableread = new Array();
+	var storedvalue = "demo";
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+		var db = window.openDatabase("settings", "1.0", "Settings", 1000000);
+		db.transaction(populateDB, errorCB, successCB);
+    }
+	
+	function populateDB(tx) {
+		tx.executeSql('CREATE TABLE IF NOT EXISTS TBLSETTINGS (id unique, language, time)');
+		tx.executeSql('INSERT INTO TBLSETTINGS (id, language, time) VALUES (1, "English", "08:00")');
+	}
+	
+	//Read whats on the database
+	function queryDB(tx) {
+		tx.executeSql('SELECT * FROM TBLSETTINGS', [], querySuccess, errorCB);
+	}
+	
+	function querySuccess(tx, results) {
+		var len = results.rows.length;
+		
+		for (var i=0; i<len; i++){
+			tableread[1][1] = "1";//results.rows.item(i).id;
+			tableread[1][2] = "sin";//results.rows.item(i).language;
+			tableread[1][3] = "6am";//results.rows.item(i).time;
+		}
+	}
+	
+	// Error state
+    function errorCB(tx, err) {
+        alert("Error processing SQL: "+err);
+    }
+
+    // Transaction success callback
+    function successCB() {
+        var db = window.openDatabase("settings", "1.0", "Settings", 1000000);
+		db.transaction(queryDB, errorCB);
+    }
+	
+	function init() {
+		alert("stored value " + "-" + storedvalue);
+	}
+	
+  </script>
+   
+</head>
+<body onLoad="init()">
+
+<!-- Home -->
+<div data-role="page" id="settingspage">
+    <div data-theme="" data-role="header">
+        <a data-role="button" href="index.html" data-icon="check" data-iconpos="left" class="ui-btn-right">
+            Save
+        </a>
+        <h3>
+            Preferences
+        </h3>
+    </div>
+    <div data-role="content">
+        <div data-role="fieldcontain">
+
+            <label for="lblLanguage">
+                Language
+            </label>
+            <select id="optLanguage" name="optLanguage" data-theme="e" data-mini="true">
+                <option value="eng">
+                    English
+                </option>
+                <option value="sin">
+                    Sinhala
+                </option>
+                <option value="tam">
+                    Tamil
+                </option>
+            </select><br><br>
+            
+            <label for="lblTimePref">
+                Time you prefer to listen to the message
+            </label>
+            <input type="time" name="txtTime" id="txtTime" value="" data-theme="e" data-mini="true" />
+            
+        </div>
+    </div>
+    <div data-theme="" data-role="footer" data-position="fixed">
+        <h1>
+        </h1>
+    </div>
+</div>
+</body>
+</html>
