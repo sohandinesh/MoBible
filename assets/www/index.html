@@ -2,47 +2,44 @@
 <html>
 <head>
 
-<meta charset="utf-8">
-<meta name="format-detection" content="telephone=no" />
-<meta name="viewport" content="width=device-width, user-scalable=no" />
-
-<title>MoBible</title>
-
-<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css">
-
-<!-- Extra Codiqa features -->
-<link rel="stylesheet" href="css/codiqa.ext.css">
-
-<!-- Mobible specific styles. -->
-<link rel="stylesheet" href="css/mobible.styles.css" type="text/css"
-	media="all" />
-
-<!-- Cordova -->
-<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
-
-<!-- jQuery and jQuery Mobile -->
-<script type="text/javascript" charset="utf-8"
-	src="js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" charset="utf-8"
-	src="js/jquery.mobile-1.3.1.min.js"></script>
-
-<!-- Extra Codiqa features -->
-<script type="text/javascript" charset="utf-8" src="js/codiqa.ext.js"></script>
-
-<script type="text/javascript" charset="utf-8">
-	document.addEventListener("deviceready", onDeviceReady, false);
-
-	function onDeviceReady() {
-		document.addEventListener("backbutton", function(e) {
-			if ($.mobile.activePage.is('#homepage')) {
-				e.preventDefault();
-				navigator.app.exitApp();
-			} else {
-				navigator.app.backHistory()
-			}
-		}, false);
-	}
-</script>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    
+    <title>MoBible</title>
+    
+    <link rel="stylesheet" href="jquery.mobile-1.3.1.min.css">
+    
+    <!-- Extra Codiqa features -->
+    <link rel="stylesheet" href="codiqa.ext.css">
+    
+    <!-- Mobible specific styles. -->
+    <link rel="stylesheet" href="mobible.styles.css" type="text/css" media="all" />
+    
+    <!-- Cordova -->
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+    
+    <!-- jQuery and jQuery Mobile -->
+    <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.1.min.js"></script>
+    
+    <!-- Extra Codiqa features -->
+    <script type="text/javascript" charset="utf-8" src="js/codiqa.ext.js"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+        document.addEventListener("deviceready", onDeviceReady, false);
+    
+        function onDeviceReady() {
+            document.addEventListener("backbutton", function(e) {
+                if ($.mobile.activePage.is('#homepage')) {
+                    e.preventDefault();
+                    navigator.app.exitApp();
+                } else {
+                    navigator.app.backHistory()
+                }
+            }, false);
+        }
+    </script>
 
 </head>
 <body>
@@ -59,10 +56,31 @@
 			<div id="headerlogo"></div>
 		</div>
 		<div data-role="content">
-			<p>Your MoBible message for the 12th July 2013 is now ready to be
-				listened to.</p>
-			<a href="mobible_audio_player.html" data-role="button">Mobible
-				Player.</a>
+			<p>
+            	Your MoBible message for the 12th July 2013 is now ready to be listened to.
+			</p>
+            
+            <!-- Audio player code -->
+            <div id="player">
+				<div id="media-info">
+					<p>
+						You're listnening <span id="media-name"></span>
+					</p>
+					<p>
+						Located at <span id="media-path"></span>
+					</p>
+					<div>
+						Played <label id="media-played">-</label> of <label
+							id="media-duration">-</label> <input type="range"
+							name="time-slider" id="time-slider" value="0" min="0" max="100"
+							data-highlight="true" />
+					</div>
+				</div>
+				<a href="#" id="player-play" title="Play / Pause"></a> <a href="#" id="player-stop" title="Stop"></a>
+			</div>
+            <!-- Audio player code ends here -->
+			<!-- <a href="mobible_audio_player.html" data-role="button">Mobible
+				Player.</a> -->
 		</div>
 		<div data-theme="" data-role="footer" data-position="fixed">
 			<h1></h1>
