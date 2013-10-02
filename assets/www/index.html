@@ -2,70 +2,73 @@
 <html>
 <head>
 
-  <meta charset="utf-8">
-  <meta name="format-detection" content="telephone=no" />
-  <meta name="viewport" content="width=device-width, user-scalable=no" />
+<meta charset="utf-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="viewport" content="width=device-width, user-scalable=no" />
 
-  <title>MoBible</title>
+<title>MoBible</title>
 
-  <link rel="stylesheet" href="jquery.mobile-1.3.1.min.css">
+<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css">
 
-  <!-- Extra Codiqa features -->
-  <link rel="stylesheet" href="codiqa.ext.css">
+<!-- Extra Codiqa features -->
+<link rel="stylesheet" href="css/codiqa.ext.css">
 
-  <!-- Cordova -->
-  <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<!-- Mobible specific styles. -->
+<link rel="stylesheet" href="css/mobible.styles.css" type="text/css"
+	media="all" />
 
-  <!-- jQuery and jQuery Mobile -->
-  <script type="text/javascript" charset="utf-8"  src="jquery-1.9.1.min.js"></script>
-  <script type="text/javascript" charset="utf-8"  src="jquery.mobile-1.3.1.min.js"></script>
+<!-- Cordova -->
+<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
 
-  <!-- Extra Codiqa features -->
-  <script type="text/javascript" charset="utf-8"  src="codiqa.ext.js"></script>
+<!-- jQuery and jQuery Mobile -->
+<script type="text/javascript" charset="utf-8"
+	src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+	src="js/jquery.mobile-1.3.1.min.js"></script>
 
-  <script type="text/javascript" charset="utf-8">
+<!-- Extra Codiqa features -->
+<script type="text/javascript" charset="utf-8" src="js/codiqa.ext.js"></script>
+
+<script type="text/javascript" charset="utf-8">
 	document.addEventListener("deviceready", onDeviceReady, false);
 
-	function onDeviceReady(){
-		document.addEventListener("backbutton", function(e){
-		   if($.mobile.activePage.is('#homepage')){
-			   e.preventDefault();
-			   navigator.app.exitApp();
-		   }
-		   else {
-			   navigator.app.backHistory()
-		   }
+	function onDeviceReady() {
+		document.addEventListener("backbutton", function(e) {
+			if ($.mobile.activePage.is('#homepage')) {
+				e.preventDefault();
+				navigator.app.exitApp();
+			} else {
+				navigator.app.backHistory()
+			}
 		}, false);
 	}
-  </script>
+</script>
 
 </head>
 <body>
-<!-- Home -->
-<div data-role="page" id="homepage">
-    <div data-theme="" data-role="header">
-        <a id="buttSettings" data-role="button" href="settings.html" data-icon="gear"
-        data-iconpos="left" class="ui-btn-right">
-            Settings
-        </a>
-        <h3>
-            <!-- MoBible -->
-        </h3>
-        <div id="headerlogo"></div>
-    </div>
-    <div data-role="content">
-        <p>
-            Your MoBible message for the 12th July 2013 is now ready to be listened
-            to.
-        </p>
-    </div>
-    <div data-theme="" data-role="footer" data-position="fixed">
-        <h1>
-        </h1>
-        <a data-role="button" data-inline="true" href="about.html " class="ui-btn-right">
-            About Us
-        </a>
-    </div>
-</div>
+	<!-- Home -->
+	<div data-role="page" id="homepage">
+		<div data-theme="" data-role="header">
+			<a id="buttSettings" data-role="button" href="settings.html"
+				data-icon="gear" data-iconpos="left" class="ui-btn-right">
+				Settings </a>
+
+			<h3>
+				<!-- MoBible -->
+			</h3>
+			<div id="headerlogo"></div>
+		</div>
+		<div data-role="content">
+			<p>Your MoBible message for the 12th July 2013 is now ready to be
+				listened to.</p>
+			<a href="mobible_audio_player.html" data-role="button">Mobible
+				Player.</a>
+		</div>
+		<div data-theme="" data-role="footer" data-position="fixed">
+			<h1></h1>
+			<a data-role="button" data-inline="true" href="about.html "
+				class="ui-btn-right"> About Us </a>
+		</div>
+	</div>
 </body>
 </html>
