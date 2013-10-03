@@ -19,17 +19,16 @@ body { margin:0; padding:0; border:0 }
    white-space: normal !important;
 }
 
-.photo
-{
-   text-align: center;
-}
+#media-controls { width: 70px; margin: 0 auto }
 
 #player-play,
 #player-stop
 {
    display: inline-block;
-   width: 48px;
-   height: 48px;
+   width:70px;
+   height:70px;
+   margin-left: auto;
+   margin-right: auto
 }
 
 #player-play
@@ -40,6 +39,7 @@ body { margin:0; padding:0; border:0 }
 #player-stop
 {
    background-image: url('images/stop.png');
+   visibility: hidden
 }
 
 #time-slider
